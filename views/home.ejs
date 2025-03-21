@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker Dashboard</title>
+    <link rel="stylesheet" href="/home.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/luxon"></script>
+</head>
+<body>
+    <header>
+        <h1>EXPENSEHREE <span class="material-symbols-outlined">
+            currency_rupee
+            </span></h1>
+        
+        <nav class="nav">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Settings</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="container">
+        <!-- Sidebar Menu -->
+        <aside class="sidebar">
+            <ul>
+                <li>Profile</li>
+                <li>Dashboard</li>
+                <li>Expenses</li>
+                <li>Income</li>
+                <li>Budget Planning</li>
+                <li>Report/Analytics</li>
+                <li>Reviews</li>
+            </ul>
+        </aside>
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="financial-status">
+                <h2>Financial Status</h2>
+                <ul>
+                    <li>Total Expenses</li>
+                    <li>Total Income</li>
+                    <li>Savings so far</li>
+                    <li>Pending Bills/Due</li>
+                </ul>
+                <div class="timeframe">
+                    <h2>Tracing graph</h2>
+                    <button>Weekly</button>
+                    <button>Monthly</button>
+                    <button>Yearly</button>
+                </div>
+            </div>
+            <div class="overview">
+                <h2>Today's Overview</h2>
+                <canvas id="overviewGraph"></canvas> <!-- Canvas for Today's Overview Graph -->
+            </div>
+            
+            <div class="schedule">
+                <div class="calendar">
+                    <div id="calendar-header">
+                        <span id="month-year"></span>
+                    </div>
+                    <table id="calendar-table">
+                        <thead>
+                            <tr>
+                                <th>Sun</th>
+                                <th>Mon</th>
+                                <th>Tue</th>
+                                <th>Wed</th>
+                                <th>Thu</th>
+                                <th>Fri</th>
+                                <th>Sat</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Days will be dynamically added here -->
+                        </tbody>
+                    </table>
+                </div>
+                <h2>Schedules</h2>
+                <ul>
+                    <li>Upcoming</li>
+                    <li>Code/Goal Due:</li>
+                    <li>Netflix</li>
+                    <li>Food</li>
+                </ul>
+            </div>
+        </main>
+    </section>
+    <footer>
+        <div class="profile">
+            <h2>Profile</h2>
+            <p>Username</p>
+            <p>Editable</p>
+            <p>Email</p>
+        </div>
+    </footer>
+
+    <!-- Link to external JavaScript file -->
+    <script src="home.js"></script>
+</body>
+</html>

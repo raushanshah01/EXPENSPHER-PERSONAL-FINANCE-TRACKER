@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expensphere</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="logo"><img src="./photos/logo.png" alt="Expensphere"></div>
+            <ul class="nav-links">
+                <li><a href="/login">Login</a></li>
+                <li><a href="/register">Register</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="top">
+            <div class="topsection">
+                <h1><span id="red">ExpenSphere</span> – Your Smarter <br> Banking & Expense Tracking Solution!</h1>
+                <span id="element"></span> <!-- Typing effect will appear here -->
+            </div>
+        </section>
+
+        <section class="top1">
+            <p class="text">“ <span id="red">ExpenSphere</span> isn’t just a tool for money management. It’s a tool for self-actualization. Who do you want to be, and how can the money you earn help you get there?”</p>
+        </section>
+        
+        <section class="why-expen">
+            <div class="text-content">
+                <h2>Why <span id="red">ExpenSphere</span> Works</h2>
+                <p>92% of our users feel more in control of their money since starting. You’re next.</p>
+    
+                <div class="features">
+                    <div class="feature">
+                        <img src="./photos/secret.webp" alt="Secret Sauce">
+                        <div>
+                            <h3>Master Your Budget</h3>
+                            <p>With ExpenSphere, every dollar has a purpose. Gain full control over your spending.</p>
+                        </div>
+                    </div>
+    
+                    <div class="feature">
+                        <img src="./photos/goals.webp" alt="Goals">
+                        <div>
+                            <h3>Achieve Your Goals</h3>
+                            <p>Plan, track, and reach your financial dreams with personalized spending strategies.</p>
+                        </div>
+                    </div>
+    
+                    <div class="feature">
+                        <img src="./photos/spend.webp" alt="Live Freely">
+                        <div>
+                            <h3>Spend Smarter</h3>
+                            <p>Enjoy life while keeping your finances on track with insightful reports and trends.</p>
+                        </div>
+                    </div>
+                </div>
+    
+                <button class="cta-button">Start Your Free Month</button>
+            </div>
+    
+            <div class="image-content">
+                <img src="./photos/app-preview.webp" alt="ExpenSphere App">
+            </div>
+        </section>
+
+        <section class="testimonials">
+            <h2 class="testimonial-heading" id="red">Real People, Real Savings</h2>
+            <p class="testimonial-subtext">See how ExpenSphere has helped users take control of their finances.</p>
+        
+            <div class="testimonial-container">
+                <div class="testimonial-card">
+                    <div class="quote-icon">❝</div>
+                    <p class="testimonial-text">
+                        "ExpenSphere helped me break free from financial stress and plan for a brighter future."
+                    </p>
+                    <div class="testimonial-user">
+                        <img src="./photos/piyush.jpg" alt="User 1">
+                        <div>
+                            <h4>Piyush</h4>
+                            <p>Member since 2025</p>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="testimonial-card">
+                    <div class="quote-icon">❝</div>
+                    <p class="testimonial-text">
+                        "I saved over $15,000 in one year and finally achieved my dream of traveling the world!"
+                    </p>
+                    <div class="testimonial-user">
+                        <img src="./photos/rahul.jpg" alt="User 2">
+                        <div>
+                            <h4>Rahul</h4>
+                            <p>Member since 2024</p>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="testimonial-card">
+                    <div class="quote-icon">❝</div>
+                    <p class="testimonial-text">
+                        "Budgeting has never been this easy. I now make smarter financial choices effortlessly."
+                    </p>
+                    <div class="testimonial-user">
+                        <img src="./photos/anand.jpg" alt="User 3">
+                        <div>
+                            <h4>Anand</h4>
+                            <p>Member since 2025</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <footer class="footer">
+            <p>© 2025 ExpenSphere. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="#facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#linkedin"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </footer>
+        
+
+
+    </main>
+
+    <!-- Load Typed.js first -->
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+    <!-- Initialize Typed.js -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var typed = new Typed('#element', {
+                strings: ['Tracking expenses...', 'Monitoring spending...', 'Planning your finances! 🚀'],
+                typeSpeed: 50,
+                backSpeed: 30,
+                loop: true
+            });
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

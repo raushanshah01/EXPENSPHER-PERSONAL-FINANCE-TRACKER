@@ -1,0 +1,280 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+header {
+    background-color: #4b6584;
+    color: white;
+    padding: 20px 20px 20px 10px; /* Fixing left space */
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 70px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 99;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.material-symbols-outlined {
+    font-size: 24px;
+    color: white;
+    margin-right: 20px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    position: relative; /* Added to fix the underline issue */
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+/* Underline effect */
+.nav a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px; /* Adjusted for better spacing */
+    width: 100%;
+    height: 3px;
+    background: #fff;
+    border-radius: 5px;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.5s ease-in-out;
+}
+
+.nav a:hover::after {
+    transform: scaleX(1);
+}
+
+
+.container {
+    display: flex;
+    flex: 1;
+    padding-top: 80px; /* Ensure space for fixed header */
+}
+
+.sidebar {
+    width: 20%;
+    background-color: #2d98da;
+    color: white;
+    padding: 20px;
+    min-height: calc(100vh - 80px);
+    position: fixed;
+    top: 70px; /* Adjusted for the fixed header */
+    left: 0;
+    overflow-y: auto;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    position: relative;
+    margin: 15px 0;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    overflow: hidden; /* To ensure the transform stays within the bounds */
+}
+
+.sidebar ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 3px;
+    background: #3867d6;
+    transform: scaleX(0); /* Initially no visible background */
+    transition: transform 0.5s ease; /* Smooth transition for the transform */
+}
+
+.sidebar ul li:hover::before {
+    transform: scaleX(1); /* Expands the background when hovered */
+}
+
+.main-content {
+    margin-left: 20%; /* Sidebar width */
+    width: 80%;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.daily-report,
+.overview,
+.financial-status,
+.schedule {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.financial-status ul {
+    list-style: none;
+    padding: 0;
+    background-color: #f4f4f9;
+    margin: 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex; /* Align items in a row */
+    justify-content: space-between; /* Space items out evenly */
+}
+
+.financial-status h2{
+    text-align: center;
+}
+
+.financial-status ul li {
+    padding: 10px 20px;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #333;
+    border-radius: 5px;
+    background-color: #e4e7eb; /* Slight background for each item */
+    flex: 1; /* Equal width for each item */
+    text-align: center; /* Center text inside each item */
+}
+
+.financial-status ul li:hover {
+    background-color: #d7e0e8; /* Lighter background on hover */
+}
+
+.financial-status .timeframe {
+    margin-top: 40px; /* Adds space between financial status and timeframe */
+}
+
+.financial-status ul li:not(:last-child) {
+    margin-right: 10px; /* Space between items */
+}
+
+
+.daily-report ul,
+.financial-status ul,
+.schedule ul {
+    list-style: none;
+    padding: 0;
+}
+
+.daily-report h2{
+    text-align: center;
+}
+
+
+
+.financial-status .timeframe button {
+    margin: 5px;
+    padding: 5px 10px;
+    background-color: #3867d6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.financial-status .timeframe button:hover {
+    background-color: #2d78bf;
+}
+
+.graph {
+    background-color: #d1d8e0;
+    height: 150px;
+    border-radius: 5px;
+}
+
+.calendar {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+}
+
+.calendar table {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+.calendar td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s ease;
+    position: relative;
+}
+
+.calendar td:hover {
+    background-color: #f0f0f5;
+    transform: scale(1.1);
+}
+
+.calendar td.current-day {
+    background-color: #ff5722;
+    color: white;
+    border-radius: 50%;
+    font-weight: bold;
+}
+
+footer {
+    background-color: #4b6584;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 50px;
+    width: 100%;
+}
+
+/* Media Query for Responsive Layout */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 50%;
+        top: 70px;
+    }
+
+    .main-content {
+        margin-left: 50%;
+        width: 100%;
+        grid-template-columns: 1fr;
+    }
+
+    header {
+        padding: 20px 5%;
+    }
+}

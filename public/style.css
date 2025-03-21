@@ -1,0 +1,328 @@
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body{
+    background-color: #ffffff;
+}
+
+/* Header Styling with Blur Effect */
+.header {
+    background: #2ec4b6; /* Semi-transparent background */
+    backdrop-filter: blur(0px); /* Blur effect */
+    padding: 15px 20px;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+/* Navigation Bar */
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Logo */
+.logo img {
+    height: 85px;
+    margin: -17px 15px;
+}
+
+/* Navigation Links */
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: rgb(240, 237, 237);
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ff9f1c;
+}
+
+.topsection {
+    background-image: url("./photos/a1.jpg"); /* Ensure the path is correct */
+    background-size: cover; /* Cover the entire section */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Avoid repetition */
+    height: 82vh; /* Full screen height */
+}
+
+
+.topsection h1{
+    font-size: 53px;
+    font-weight: 60px;
+    position: absolute;
+    top: 15%; /* Adjust top position */
+    left: 40px;
+    color: #2ec4b6;
+}
+
+.topsection #element{
+    font-size: 58px;
+    font-weight: bolder;
+    position: absolute;
+    top: 250px; /* Adjust top position */
+    left: 550px;
+    color: #ff9f1c;
+}
+
+.top1 .text {
+    font-size: 18px;
+    font-weight: bolder; /* Use a valid weight */
+    width: 40%; /* Set appropriate width */
+    max-width: 600px; /* Restrict max width */
+    padding: 40px;
+    text-align: center;
+    line-height: 1.5;
+    margin-left: 400px;
+
+}
+
+
+#red{
+    color: #ff9f1c;
+    font-weight: bolder;
+}
+
+/* Section Layout */
+.why-expen {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 60px;
+}
+
+/* Left Side - Text */
+.text-content {
+    max-width: 50%;
+}
+
+.text-content h2 {
+    font-size: 32px;
+    color: #212529;
+}
+
+
+
+.text-content p {
+    font-size: 18px;
+    color: #555;
+    margin: 10px 0 20px;
+}
+
+/* Features */
+.features {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.feature {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.feature img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    position: relative;
+    top: -8px;
+}
+
+.feature h3 {
+    font-size: 20px;
+    color: #212529;
+}
+
+.feature p {
+    font-size: 16px;
+    color: #555;
+}
+
+/* CTA Button */
+.cta-button {
+    background-color: #2ec4b6;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px;
+    position: absolute;
+    left: 300px;
+}
+
+.cta-button:hover {
+    background-color: #ff9f1c;
+}
+
+/* Right Side - Image */
+.image-content img {
+    width: 700px;
+    height: 500px;
+    border-radius: 10px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .why-expen {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .text-content {
+        max-width: 100%;
+    }
+
+    .image-content img {
+        width: 100%;
+        margin-top: 20px;
+    }
+}
+
+.testimonials {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.testimonial-heading {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.testimonial-subtext {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.testimonial-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.testimonial-card {
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px #2ec4b6;
+    width: 360px;
+    height: 227px;
+    text-align: left;
+    position: relative;
+    background-color: #cbf3f0;
+}
+
+.quote-icon {
+    font-size: 3rem;
+    position: absolute;
+    top: -20px;
+    left: 15px;
+    color: #ff9f1c;
+    opacity: 0.5;
+}
+
+.testimonial-text {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+.testimonial-user {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.testimonial-user img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid #ff9f1c;
+}
+
+.testimonial-user h4 {
+    margin: 0;
+    font-size: 1.3rem;
+    color: #222;
+}
+
+.testimonial-user p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #777;
+}
+
+
+.footer {
+    text-align: center;
+    padding: 20px;
+    background: #2ec4b6;
+    color: #fff;
+    font-size: 1rem;
+}
+
+.social-icons {
+    margin-top: 10px;
+}
+
+.social-icons a {
+    color: #fff;
+    margin: 0 10px;
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+
+.social-icons a {
+    color: #fff; /* Default white color */
+    margin: 0 10px;
+    font-size: 1.0rem;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.social-icons a:hover {
+    text-shadow: none;
+}
+
+/* Facebook */
+.social-icons a[href="#facebook"]:hover {
+    color: #1877F2; /* Original Facebook Blue */
+    font-size: 1.5rem;
+}
+
+/* Twitter */
+.social-icons a[href="#twitter"]:hover {
+    color: #1DA1F2; /* Original Twitter Blue */
+    font-size: 1.5rem;
+}
+
+/* Instagram */
+.social-icons a[href="#instagram"]:hover {
+    color: #E1306C; /* Instagram Pinkish-Red */
+    font-size: 1.5rem;
+}
+
+/* LinkedIn */
+.social-icons a[href="#linkedin"]:hover {
+    color: #0077B5; /* Original LinkedIn Blue */
+    font-size: 1.5rem;
+}
