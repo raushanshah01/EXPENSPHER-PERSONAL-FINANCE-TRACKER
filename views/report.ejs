@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Report & Analytics</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js CDN -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f7faff;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: #006f72;
+      color: white;
+      text-align: center;
+      padding: 2rem;
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+    }
+
+    main {
+      flex: 1;
+      padding: 2rem;
+      max-width: 1400px;
+      margin: auto;
+    }
+
+    .section-title {
+      color: #006f72;
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .report-card {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-left: 8px solid #006f72;
+      display: flex;
+      justify-content: space-between;
+      width: 95%;
+      max-width: 1200px;
+      overflow: hidden;
+    }
+
+    .report-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    }
+
+    .report-card h2 {
+      font-size: 1.6rem;
+      color: #006f72;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .report-info {
+      width: 50%;
+    }
+
+    .report-info p {
+      font-size: 1.2rem;
+      margin: 0.5rem 0;
+    }
+
+    .chart {
+      width: 45%;
+      height: 250px;
+      background: #e9f6f4;
+      border: 2px dashed #006f72;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #aaa;
+      font-size: 1.3rem;
+    }
+
+    footer {
+      background-color: #006f72;
+      color: white;
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 1rem;
+      margin-top: 2rem;
+    }
+
+    footer a {
+      color: white;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      .report-card {
+        padding: 1.5rem;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .report-info, .chart {
+        width: 100%;
+        margin-bottom: 1rem;
+      }
+
+      .section-title {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Reports & Analytics</h1>
+  </header>
+
+  <main>
+    <h2 class="section-title">Your Financial Overview</h2>
+
+    <div class="report-card">
+      <div class="report-info">
+        <h2>Income vs Expenses</h2>
+        <p>Total Income: ₹40,000</p>
+        <p>Total Expenses: ₹29,000</p>
+      </div>
+      <div class="chart">
+        <canvas id="incomeExpensesChart"></canvas> <!-- Canvas for the bar chart -->
+      </div>
+    </div>
+
+    <div class="report-card">
+      <div class="report-info">
+        <h2>Spending Breakdown</h2>
+        <p>Rent: ₹12,000</p>
+        <p>Groceries: ₹5,000</p>
+        <p>Entertainment: ₹2,000</p>
+      </div>
+      <div class="chart">
+        <canvas id="spendingChart"></canvas> <!-- Canvas for the pie chart -->
+      </div>
+    </div>
+
+    <div class="report-card">
+      <div class="report-info">
+        <h2>Savings Trends</h2>
+        <p>January: ₹5,000</p>
+        <p>February: ₹4,500</p>
+        <p>March: ₹6,000</p>
+      </div>
+      <div class="chart">
+        <canvas id="savingsChart"></canvas> <!-- Canvas for the line chart -->
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Financial Dashboard. All rights reserved. <a href="#">Privacy Policy</a></p>
+  </footer>
+
+  <script>
+    // Line Chart for Savings Trends
+    var ctxSavings = document.getElementById('savingsChart').getContext('2d');
+    var savingsChart = new Chart(ctxSavings, {
+      type: 'line',
+      data: {
+        labels: ['January', 'February', 'March'],
+        datasets: [{
+          label: 'Savings Trend',
+          data: [5000, 4500, 6000],
+          borderColor: '#006f72',
+          backgroundColor: 'rgba(0, 111, 114, 0.2)',
+          borderWidth: 2,
+          fill: true
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+
+    // Bar Chart for Income vs Expenses
+    var ctxIncomeExpenses = document.getElementById('incomeExpensesChart').getContext('2d');
+    var incomeExpensesChart = new Chart(ctxIncomeExpenses, {
+      type: 'bar',
+      data: {
+        labels: ['Income', 'Expenses'],
+        datasets: [{
+          label: 'Amount in ₹',
+          data: [40000, 29000],
+          backgroundColor: ['#4CAF50', '#FF6347'],
+          borderColor: ['#4CAF50', '#FF6347'],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+
+    // Pie Chart for Spending Breakdown
+    var ctxSpending = document.getElementById('spendingChart').getContext('2d');
+    var spendingChart = new Chart(ctxSpending, {
+      type: 'pie',
+      data: {
+        labels: ['Rent', 'Groceries', 'Entertainment'],
+        datasets: [{
+          data: [12000, 5000, 2000],
+          backgroundColor: ['#FFB6C1', '#4CAF50', '#FF6347'],
+          hoverBackgroundColor: ['#FF69B4', '#388E3C', '#FF4500']
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false
+      }
+    });
+  </script>
+</body>
+</html>

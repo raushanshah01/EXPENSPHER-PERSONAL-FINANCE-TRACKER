@@ -1,0 +1,134 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #0099ff;
+}
+
+.container {
+    display: flex;
+    width: 900px;
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    position: relative;
+}
+
+.left-section, .right-section {
+    width: 50%;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    position: relative;
+}
+
+/* Background image for login */
+.left-section {
+    background: url('./photos/login1.png') no-repeat center center/cover;
+}
+
+/* Background image for register */
+.register-mode .left-section {
+    background: url('./photos/login1.png') no-repeat center center/cover; /* Update with your register image */
+}
+
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.brand {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.left-section p {
+    position: absolute;
+    bottom: 30px;
+    left: 20px;
+    color: #fff;
+    font-size: 16px;
+}
+
+
+.right-section {
+    padding: 40px;
+    text-align: center;
+    position: relative;
+    transition: opacity 0.5s ease-in-out; /* Ensure the transition matches the JavaScript timing */
+}
+
+.right-section h2 {
+    font-size: 28px;
+    color: #0099ff;
+}
+
+.right-section form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.right-section input {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.right-section button {
+    background: #0099ff;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.social-login {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.social-login button {
+    background: #eee;
+    border: none;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Transition effect for register mode */
+.register-mode .left-section {
+    transform: translateX(100%);
+    opacity: 1;
+}
+
+.register-mode .right-section {
+    transform: translateX(-100%);
+    opacity: 1;
+}
+
+.register-mode .container {
+    flex-direction: row-reverse;
+}
+
+.register-mode .right-section h2 {
+    color: #ff0099;
+}

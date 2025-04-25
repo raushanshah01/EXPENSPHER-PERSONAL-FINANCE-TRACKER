@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker Dashboard</title>
+    <link rel="stylesheet" href="/home.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/luxon"></script>
+</head>
+<body>
+    <header>
+        <h1>EXPENSEHREE <span class="material-symbols-outlined">currency_rupee</span></h1>
+        <nav class="nav">
+            <ul>
+                <li><a href="/contact">Contact Us</a></li>
+                <li><a href="#" id="logoutLink">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section class="container">
+        <!-- Sidebar Menu -->
+        <aside class="sidebar">
+            <ul>
+                <li><a href="/profile" style="text-decoration: none; color:white;">Profile</a></li>
+                
+                <li><a href="/budgetplanning">Budget Planning</a></li>
+
+                <li><a href="/report">Report & Analytics</a></li>
+                <li><a href="/review">Review</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Centered Welcome Message Section -->
+            <h2 style="text-align: center;">Welcome, Raushan Shah</h2>
+            <p>Here is your financial dashboard.</p>
+
+            <!-- Financial Status Section -->
+            <div class="financial-status">
+                <h2>Financial Status</h2>
+                <ul>
+                    <li>Total Expenses: <%= profile ? profile.expenses : 'N/A' %></li>
+                    <li>Total Income: <%= profile ? profile.income : 'N/A' %></li>
+                    <li>Savings so far: <%= profile ? profile.savingGoal : 'N/A' %></li>
+                    <li>Bill Alert: <%= profile ? profile.billAlert : 'N/A' %></li>
+                </ul>
+                <div class="schedule-items">
+                    <h2>Schedules</h2>
+                    <ul>
+                        <li>
+                            <strong>Upcoming:</strong> <span>Bill Payment - 25th April</span>
+                        </li>
+                        <li>
+                            <strong>Code/Goal Due:</strong> <span><%= profile ? profile.financeGoal : 'budget' %></span>
+                        </li>
+                        <li>
+                            <strong>Netflix:</strong> <span>Subscription Renewal - 27th April</span>
+                        </li>
+                        <li>
+                            <strong>Food:</strong> <span>Grocery Budget Review</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Financial Overview Section -->
+            <div class="overview">
+                <h2>Today's Overview</h2>
+                <canvas id="overviewGraph"></canvas>
+                <script>
+                    const ctx = document.getElementById('overviewGraph').getContext('2d');
+                    new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: ['Income', 'Expenses', 'Savings'],
+                            datasets: [{
+                                label: 'Overview',
+                                data: [<%= profile ? profile.income : 0 %>, <%= profile ? profile.expenses : 0 %>, <%= profile ? profile.savingGoal : 0 %>],
+                                backgroundColor: ['#2ecc71', '#e74c3c', '#3498db']
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: {
+                                legend: {
+                                    display: true
+                                }
+                            }
+                        }
+                    });
+                </script>
+            </div>
+
+            <!-- Tracing Graph Section -->
+            <div class="overview">
+                <h2 style="text-align: center;">Tracing Graph</h2>
+                <div class="timeframe">
+                    <button>Weekly</button>
+                    <button>Monthly</button>
+                    <button>Yearly</button>
+                </div>
+                <canvas id="tracingGraph"></canvas>
+                <script>
+                    // Tracing Graph (Line Chart)
+                    const tracingCanvas = document.getElementById("tracingGraph");
+                    const tracingCtx = tracingCanvas.getContext("2d");
+
+                    // Data for tracing graph (default: Weekly)
+                    const tracingData = {
+                        labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+                        datasets: [{
+                            label: "Weekly Expense Trend",
+                            data: [2000, 2500, 1800, 3000, 4000, 3800, 5000], // Example values
+                            borderColor: "#FF5733",
+                            backgroundColor: "rgba(255,87,51,0.2)",
+                            borderWidth: 2,
+                            fill: true
+                        }]
+                    };
+
+                    // Create Tracing Graph (Line Chart)
+                    let tracingChart = new Chart(tracingCtx, {
+                        type: "line",
+                        data: tracingData,
+                        options: {
+                            responsive: true,
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        }
+                    });
+
+                    // Function to update tracing graph when clicking Weekly, Monthly, or Yearly
+                    function updateTracingGraph(timeframe) {
+                        let newData = [];
+
+                        if (timeframe === "Weekly") {
+                            tracingData.labels = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+                            newData = [2000, 2500, 1800, 3000, 4000, 3800, 5000];
+                        } else if (timeframe === "Monthly") {
+                            tracingData.labels = ["Week 1", "Week 2", "Week 3", "Week 4"];
+                            newData = [10000, 12000, 15000, 13000];
+                        } else if (timeframe === "Yearly") {
+                            tracingData.labels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+                            newData = [15000, 18000, 22000, 17000, 20000, 24000, 26000, 28000, 30000, 32000, 35000, 37000];
+                        }
+
+                        tracingData.datasets[0].data = newData;
+                        tracingChart.update();
+                    }
+
+                    // Add event listeners to the timeframe buttons
+                    document.querySelectorAll(".timeframe button").forEach(button => {
+                        button.addEventListener("click", function () {
+                            updateTracingGraph(this.textContent);
+                        });
+                    });
+                </script>
+            </div>
+
+            <!-- Schedule Section -->
+            <div class="schedule">
+                <div class="calendar">
+                    <div id="calendar-header">
+                        <span id="month-year"></span>
+                    </div>
+                    <table id="calendar-table">
+                        <thead>
+                            <tr>
+                                <th>Sun</th>
+                                <th>Mon</th>
+                                <th>Tue</th>
+                                <th>Wed</th>
+                                <th>Thu</th>
+                                <th>Fri</th>
+                                <th>Sat</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Days will be dynamically added here -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                
+                
+            </div>
+        </main>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Your Product. All rights reserved. <a href="#">Privacy Policy</a></p>
+    </footer>
+
+    <!-- Link to external JavaScript file -->
+    <script src="home.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const monthYear = document.getElementById("month-year");
+            const calendarTable = document.querySelector("#calendar-table tbody");
+
+            function generateCalendar(year, month) {
+                calendarTable.innerHTML = ""; // Clear previous calendar
+
+                const firstDay = new Date(year, month, 1).getDay();
+                const daysInMonth = new Date(year, month + 1, 0).getDate();
+                const today = new Date();
+                const isCurrentMonth = today.getFullYear() === year && today.getMonth() === month;
+
+                monthYear.textContent = new Date(year, month).toLocaleDateString("en-US", {
+                    month: "long",
+                    year: "numeric"
+                });
+
+                let row = document.createElement("tr");
+                for (let i = 0; i < firstDay; i++) {
+                    let emptyCell = document.createElement("td");
+                    row.appendChild(emptyCell);
+                }
+
+                for (let day = 1; day <= daysInMonth; day++) {
+                    let cell = document.createElement("td");
+                    cell.textContent = day;
+
+                    if (isCurrentMonth && day === today.getDate()) {
+                        cell.style.backgroundColor = "#ffcccb"; // Highlight today
+                        cell.style.fontWeight = "bold";
+                    }
+
+                    row.appendChild(cell);
+
+                    if ((firstDay + day) % 7 === 0) { // Start a new row every Sunday
+                        calendarTable.appendChild(row);
+                        row = document.createElement("tr");
+                    }
+                }
+
+                if (row.children.length > 0) {
+                    calendarTable.appendChild(row);
+                }
+            }
+
+            const today = new Date();
+            generateCalendar(today.getFullYear(), today.getMonth());
+        });
+
+        document.getElementById("logoutLink").addEventListener("click", function (e) {
+            e.preventDefault(); // stop the default link behavior
+
+            fetch("/api/logout", {
+                method: "POST",
+                credentials: "include", // needed if token is in HTTP-only cookie
+            })
+            .then(response => {
+                if (response.redirected) {
+                    window.location.href = response.url; // follow redirect from server
+                } else {
+                    window.location.href = "/"; // fallback
+                }
+            })
+            .catch(error => {
+                console.error("Logout failed:", error);
+            });
+        });
+    </script>
+</body>
+</html>

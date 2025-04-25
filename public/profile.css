@@ -1,0 +1,110 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #c4ecff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.profile-container {
+    background: #2ec4b6;
+    color: black;
+    padding: 40px;
+    width: 100%;
+    height: 90vh;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 20px;
+}
+
+.profile-header label {
+    cursor: pointer;
+}
+
+.profile-header #profile-pic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #007bff;
+    transition: 0.3s;
+}
+
+.profile-header img:hover {
+    opacity: 0.8;
+}
+
+.profile-info {
+    text-align: left;
+}
+
+.financial-summary, .spending-chart, .insights, .actions {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.financial-summary {
+    display: flex;
+    justify-content: space-around;
+    background: #f8f9fc;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.chart-container {
+    color: black;
+    width: 500px;
+    height: 500px;
+    box-sizing: border-box;
+    margin: 0px 270px;
+}
+
+.actions button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.actions button:hover {
+    background-color: #0056b3;
+}
+
+#change-pic-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s;
+    margin-top: 10px;
+}
+
+#change-pic-btn:hover {
+    background-color: #218838;
+}
+
+

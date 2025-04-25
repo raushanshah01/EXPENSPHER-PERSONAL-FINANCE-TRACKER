@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Profile - <%= user.name %></title>
+  <link rel="stylesheet" href="/edit-profile.css">
+</head>
+<body>
+  <div class="edit-profile-container">
+    <h2>Edit Profile</h2>
+    <form action="/edit-profile" method="POST">
+      <label>Name:</label>
+      <input type="text" name="name" value="<%= user.name %>" required>
+
+      <label>Email (unchangeable):</label>
+      <input type="email" value="<%= user.email %>" disabled>
+
+      <label>Monthly Income:</label>
+      <input type="number" name="monthlyIncome" value="<%= user.monthlyIncome %>" required>
+
+      <button type="submit">Save Changes</button>
+    </form>
+    <a href="/profile">Cancel</a>
+  </div>
+</body>
+</html>

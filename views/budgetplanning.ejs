@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Budget Planning</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #c4ecff;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header, footer {
+      background-color: #2ec4b6;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    main {
+      flex: 1;
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    h1 {
+      color: #2ec4b6;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .budget-form {
+      background-color: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .budget-form label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+
+    .budget-form input[type="number"] {
+      width: 100%;
+      padding: 0.6rem;
+      margin-top: 0.3rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .budget-form button {
+      margin-top: 2rem;
+      background-color: #2ec4b6;
+      color: white;
+      padding: 0.7rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .budget-form button:hover {
+      background-color: #24afa3;
+    }
+
+    .result {
+      margin-top: 2rem;
+      background-color: #e7f9f7;
+      padding: 1rem;
+      border-radius: 8px;
+      border-left: 6px solid #2ec4b6;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h2>Budget Planning</h2>
+  </header>
+
+  <main>
+    <h1>Plan Your Monthly Budget</h1>
+    <form class="budget-form" id="budgetForm">
+      <label for="income">Monthly Income</label>
+      <input type="number" id="income" name="income" required />
+
+      <label for="rent">Rent</label>
+      <input type="number" id="rent" name="rent" />
+
+      <label for="groceries">Groceries</label>
+      <input type="number" id="groceries" name="groceries" />
+
+      <label for="entertainment">Entertainment</label>
+      <input type="number" id="entertainment" name="entertainment" />
+
+      <label for="savings">Savings Goal</label>
+      <input type="number" id="savings" name="savings" />
+
+      <button type="submit">Calculate Budget</button>
+    </form>
+
+    <div class="result" id="result" style="display: none;"></div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Budget Planner. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const form = document.getElementById('budgetForm');
+    const resultDiv = document.getElementById('result');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const income = parseFloat(form.income.value);
+      const rent = parseFloat(form.rent.value || 0);
+      const groceries = parseFloat(form.groceries.value || 0);
+      const entertainment = parseFloat(form.entertainment.value || 0);
+      const savings = parseFloat(form.savings.value || 0);
+
+      const totalExpenses = rent + groceries + entertainment + savings;
+      const remaining = income - totalExpenses;
+
+      resultDiv.style.display = 'block';
+      resultDiv.innerHTML = `
+        <strong>Total Expenses:</strong> ₹${totalExpenses.toFixed(2)}<br>
+        <strong>Remaining Balance:</strong> ₹${remaining.toFixed(2)}<br>
+        ${remaining < 0 ? '<span style="color:red">Warning: You have overspent your income!</span>' : '<span style="color:green">Great! You are within your budget.</span>'}
+      `;
+    });
+  </script>
+</body>
+</html>

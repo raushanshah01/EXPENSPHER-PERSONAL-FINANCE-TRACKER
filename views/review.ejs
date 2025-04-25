@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Customer Reviews</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f7fa;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    header, footer {
+      background-color: #006f72;
+      color: white;
+      text-align: center;
+      padding: 2rem;
+      width: 100%;
+    }
+
+    footer a{
+        color: #472626;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+    }
+
+    .reviews-section {
+      width: 80%;
+      max-width: 1200px;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .review-card {
+      background-color: white;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .review-card img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .review-content {
+      flex: 1;
+    }
+
+    .review-content h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #006f72;
+    }
+
+    .review-content p {
+      font-size: 1rem;
+      color: #555;
+      margin: 0.5rem 0;
+    }
+
+    .review-content .rating {
+      display: flex;
+      gap: 0.3rem;
+    }
+
+    .star {
+      font-size: 1.2rem;
+      color: #FFD700;
+    }
+
+    .review-content .date {
+      font-size: 0.9rem;
+      color: #888;
+    }
+
+    /* Review Form Styles */
+    .review-form {
+      background-color: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      width: 80%;
+      max-width: 800px;
+      margin-bottom: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .review-form input,
+    .review-form textarea {
+      padding: 0.8rem;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1rem;
+      width: 100%;
+    }
+
+    .review-form button {
+      background-color: #006f72;
+      color: white;
+      padding: 1rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .review-form button:hover {
+      background-color: #004c48;
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      .reviews-section {
+        padding: 1rem;
+      }
+
+      .review-card {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .review-card img {
+        margin-bottom: 1rem;
+      }
+
+      .review-form {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Customer Reviews</h1>
+  </header>
+
+
+
+  <!-- Reviews Section -->
+  <div class="reviews-section" id="reviews-container">
+    <!-- Review Cards will be added here dynamically -->
+    <div class="review-card">
+      <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="User Photo" />
+      <div class="review-content">
+        <h3>John Doe</h3>
+        <p>This product exceeded my expectations. The quality is fantastic, and it arrived on time. Highly recommend!</p>
+        <div class="rating">
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">☆</span>
+        </div>
+        <div class="date">Posted on April 20, 2025</div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <img src="https://randomuser.me/api/portraits/women/2.jpg" alt="User Photo" />
+      <div class="review-content">
+        <h3>Jane Smith</h3>
+        <p>I wasn't satisfied with the product. It didn’t meet my expectations, and the customer service was unhelpful.</p>
+        <div class="rating">
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">☆</span>
+          <span class="star">☆</span>
+          <span class="star">☆</span>
+        </div>
+        <div class="date">Posted on April 18, 2025</div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <img src="https://randomuser.me/api/portraits/men/3.jpg" alt="User Photo" />
+      <div class="review-content">
+        <h3>Michael Brown</h3>
+        <p>Great value for money! It’s a solid product with no complaints. Would definitely buy again.</p>
+        <div class="rating">
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+        </div>
+        <div class="date">Posted on April 15, 2025</div>
+      </div>
+    </div>
+  </div>
+
+    <!-- Review Form -->
+    <div class="review-form">
+        <h2>Submit Your Review</h2>
+        <input type="text" id="reviewer-name" placeholder="Your Name" />
+        <input type="file" id="profile-image" accept="image/*" />
+        <textarea id="review-text" rows="4" placeholder="Write your review here"></textarea>
+    
+        <div class="rating">
+          <label for="rating">Rating:</label>
+          <select id="rating">
+            <option value="1">1 Star</option>
+            <option value="2">2 Stars</option>
+            <option value="3">3 Stars</option>
+            <option value="4">4 Stars</option>
+            <option value="5">5 Stars</option>
+          </select>
+        </div>
+    
+        <button onclick="submitReview()">Submit Review</button>
+      </div>
+
+  <footer>
+    <p>&copy; 2025 Your Product. All rights reserved. <a href="#">Privacy Policy</a></p>
+  </footer>
+
+  <script>
+    function submitReview() {
+      const name = document.getElementById('reviewer-name').value;
+      const profileImage = document.getElementById('profile-image').files[0];
+      const reviewText = document.getElementById('review-text').value;
+      const rating = document.getElementById('rating').value;
+
+      const reviewCard = document.createElement('div');
+      reviewCard.classList.add('review-card');
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = document.createElement('img');
+        img.src = e.target.result;
+        img.alt = `${name}'s profile picture`;
+
+        reviewCard.appendChild(img);
+
+        const reviewContent = document.createElement('div');
+        reviewContent.classList.add('review-content');
+
+        const h3 = document.createElement('h3');
+        h3.textContent = name;
+        const p = document.createElement('p');
+        p.textContent = reviewText;
+
+        const ratingDiv = document.createElement('div');
+        ratingDiv.classList.add('rating');
+        for (let i = 1; i <= 5; i++) {
+          const star = document.createElement('span');
+          star.classList.add('star');
+          star.textContent = i <= rating ? '★' : '☆';
+          ratingDiv.appendChild(star);
+        }
+
+        const dateDiv = document.createElement('div');
+        dateDiv.classList.add('date');
+        dateDiv.textContent = `Posted on ${new Date().toLocaleDateString()}`;
+
+        reviewContent.appendChild(h3);
+        reviewContent.appendChild(p);
+        reviewContent.appendChild(ratingDiv);
+        reviewContent.appendChild(dateDiv);
+
+        reviewCard.appendChild(reviewContent);
+        document.getElementById('reviews-container').appendChild(reviewCard);
+      };
+
+      if (profileImage) {
+        reader.readAsDataURL(profileImage);
+      } else {
+        const defaultImg = document.createElement('img');
+        defaultImg.src = 'https://randomuser.me/api/portraits/men/1.jpg';
+        reviewCard.appendChild(defaultImg);
+      }
+
+      document.getElementById('reviewer-name').value = '';
+      document.getElementById('review-text').value = '';
+      document.getElementById('rating').value = '1';
+      document.getElementById('profile-image').value = '';
+    }
+  </script>
+</body>
+</html>

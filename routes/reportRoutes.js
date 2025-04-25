@@ -1,0 +1,9 @@
+// routes/reportRoutes.js
+const express = require('express');
+const router = express.Router();
+
+router.get('/', (req, res) => {
+  res.render('report', { user: req.user }); // render report.ejs or reportAnalytics.ejs
+});
+
+module.exports = router;

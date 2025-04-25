@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Complete Your Financial Profile</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #e0f7fa;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .form-container {
+      max-width: 500px;
+      width: 100%;
+      background-color: #ffffff;
+      padding: 30px 40px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #222;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 25px;
+      border: none;
+      background-color: #3b82f6;
+      color: #fff;
+      font-weight: bold;
+      font-size: 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #2563eb;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <h2>Complete Your Financial Profile</h2>
+    <form action="/auth/submit-profile-info" method="POST">
+      <label for="income">Monthly Income (₹):</label>
+      <input type="number" id="income" name="income" required>
+
+      <label for="expenses">Average Monthly Expenses (₹):</label>
+      <input type="number" id="expenses" name="expenses" required>
+
+      <label for="savingGoal">Monthly Saving Goal (₹):</label>
+      <input type="number" id="savingGoal" name="savingGoal" required>
+
+      <label for="financeGoal">Main Financial Goal:</label>
+      <select id="financeGoal" name="financeGoal" required onchange="handleGoalChange()">
+        <option value="">Select a goal</option>
+        <option value="savings">Save More</option>
+        <option value="debt">Reduce Debt</option>
+        <option value="track">Track Spending</option>
+        <option value="budget">Set a Budget</option>
+      </select>
+
+      <div id="goalAmountContainer" class="hidden">
+        <label for="goalAmount">Enter Your Goal Amount (₹):</label>
+        <input type="number" id="goalAmount" name="goalAmount">
+      </div>
+
+      <label for="billAlert">Do you want alerts for upcoming bills?</label>
+      <select id="billAlert" name="billAlert" required>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
+
+      <button type="submit">Save and Continue</button>
+    </form>
+  </div>
+
+  <script>
+    function handleGoalChange() {
+      const goalSelect = document.getElementById('financeGoal');
+      const goalAmountDiv = document.getElementById('goalAmountContainer');
+      const goalAmountInput = document.getElementById('goalAmount');
+
+      if (goalSelect.value === 'budget') {
+        goalAmountDiv.classList.remove('hidden');
+        goalAmountInput.setAttribute('required', 'required');
+      } else {
+        goalAmountDiv.classList.add('hidden');
+        goalAmountInput.removeAttribute('required');
+        goalAmountInput.value = '';
+      }
+    }
+  </script>
+
+</body>
+</html>
