@@ -254,12 +254,22 @@ footer {
     color: white;
     text-align: center;
     padding: 20px;
+<<<<<<< HEAD
     width: 100%;
     /* Removed position: fixed to allow scrolling */
     position: relative; /* Default positioning */
 }
 
 
+=======
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 50px;
+    width: 100%;
+}
+
+>>>>>>> f9b3af4a138f0c001dbecf51e9de271d2f7d4a15
 /* Media Query for Responsive Layout */
 @media (max-width: 768px) {
     .sidebar {
@@ -277,6 +287,7 @@ footer {
         padding: 20px 5%;
     }
 }
+<<<<<<< HEAD
 
 
 
@@ -291,3 +302,5 @@ a{
     text-decoration: none;
     color: inherit;
 }
+=======
+>>>>>>> f9b3af4a138f0c001dbecf51e9de271d2f7d4a15

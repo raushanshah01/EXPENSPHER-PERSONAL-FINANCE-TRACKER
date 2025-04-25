@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "name": "expenshpere",
+=======
+  "name": "expensphere",
+>>>>>>> f9b3af4a138f0c001dbecf51e9de271d2f7d4a15
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -10,6 +14,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+<<<<<<< HEAD
     "bcryptjs": "^3.0.2",
     "body-parser": "^1.20.3",
     "cookie-parser": "^1.4.7",
@@ -22,5 +27,12 @@
   },
   "devDependencies": {
     "nodemon": "^3.1.9"
+=======
+    "dotenv": "^16.4.7",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "express-session": "^1.18.1",
+    "mongoose": "^8.12.1"
+>>>>>>> f9b3af4a138f0c001dbecf51e9de271d2f7d4a15
   }
 }

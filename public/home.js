@@ -179,6 +179,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
     const today = new Date();
     generateCalendar(today.getFullYear(), today.getMonth());
+<<<<<<< HEAD
 });
 
 document.getElementById("logoutLink").addEventListener("click", function (e) {
@@ -200,3 +201,6 @@ document.getElementById("logoutLink").addEventListener("click", function (e) {
     });
 });
 
+=======
+});
+>>>>>>> f9b3af4a138f0c001dbecf51e9de271d2f7d4a15
